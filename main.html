@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Solar - Estimate Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #f9f9f9; }
+    .container { max-width: 600px; margin: auto; background: #fff; padding: 2rem; box-shadow: 0 0 10px #ccc; border-radius: 8px; }
+    input, button { width: 100%; padding: 0.8rem; margin-top: 1rem; font-size: 1rem; }
+    h1 { text-align: center; }
+  </style>
+</head>
+<body>
+  <script>
+    if (localStorage.getItem("aisolar-auth") !== "true") {
+      window.location.href = "index.html";
+    }
+  </script>
+  <div class="container">
+    <h1>AI Solar</h1>
+    <p>Enter your address to get a solar system estimate powered by AI.</p>
+    <input type="text" id="address" placeholder="Enter your address" />
+    <input type="text" id="icp" placeholder="Optional: Enter ICP number" />
+    <button onclick="saveForm()">Submit</button>
+    <p id="status" style="color: green;"></p>
+  </div>
+
+  <script>
+    function saveForm() {
+      const address = document.getElementById('address').value;
+      const icp = document.getElementById('icp').value;
+      localStorage.setItem('aiSolarAddress', address);
+      localStorage.setItem('aiSolarICP', icp);
+      document.getElementById('status').textContent = "Details saved! AI estimate engine coming soon.";
+    }
+  </script>
+</body>
+</html>
